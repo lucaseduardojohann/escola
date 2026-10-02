@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroFuturo - Agricultura CEEP</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        /* Cores principais */
+        :root {
+            --verde-escuro: #8eeb93;
+            --verde-claro: #4caf50;
+            --terra: #703520;
+            --branco: #ffffff;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #c8e6c9;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #c8e6c9;
+        }
+
+        /* Seção Hero (Banner Principal) */
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.7), rgba(46, 125, 50, 0.7)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--branco);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--verde-claro);
+            color: var(--branco);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #388e3c;
+            transform: translateY(-3px);
+        }
+
+        /* Seção Sobre */
+        .sobre, .servicos, .contato {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .titulo-secao {
+            font-size: 2.5rem;
+            color: var(--verde-escuro);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .titulo-secao::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--verde-claro);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .sobre p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Seção Serviços */
+        .servicos {
+            background-color: var(--branco);
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #f1f8e9;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            color: var(--verde-escuro);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        /* Seção Contato */
+        .form-contato {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--branco);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--terra);
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: var(--verde-claro);
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1b5e20;
+            color: var(--branco);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        /* Responsividade para Celulares */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">Agro<span>Futuro</span></div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner Principal -->
+    <section id="inicio" class="hero">
+        <h1>Cultivando o Futuro com Sustentabilidade no CEEP</h1>
+        <p>Levamos tecnologia, inovação e respeito à natureza direto para o campo, garantindo as melhores colheitas para você que estuda no CEEP.</p>
+        <a href="#contato" class="btn">Fale com um Especialista</a>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre" class="sobre">
+        <h2 class="titulo-secao">Nossa História no Campo</h2>
+        <p>A AgroFuturo nasceu do desejo de unir as tradições do campo com a tecnologia do amanhã. Nossa missão é apoiar pequenos, médios e grandes produtores a alcançarem o máximo rendimento de suas terras de forma 100% orgânica e sustentável, preservando o solo para as futuras gerações.</p>
+    </section>
+
+    <!-- Seção Serviços -->
+    <section id="servicos" class="servicos">
+        <h2 class="titulo-secao">Nossas Soluções</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>🌱 Sementes Premium</h3>
+                <p>Fornecemos sementes selecionadas e adaptadas ao clima da sua região para garantir germinação rápida e colheita farta.</p>
+            </div>
+            <div class="card">
+                <h3>🚜 Tecnologia Agrícola</h3>
+                <p>Consultoria na implementação de drones, sensores de solo e irrigação inteligente para otimizar os seus recursos.</p>
+            </div>
+            <div class="card">
+                <h3>🌾 Nutrição de Solo</h3>
+                <p>Desenvolvemos fertilizantes orgânicos e defensivos biológicos que protegem a sua lavoura sem agredir o meio ambiente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="contato">
+        <h2 class="titulo-secao">Entre em Contato</h2>
+        <form class="form-contato" onsubmit="enviarMensagem(event)">
+            <div class="input-group">
+                <label for="nome">Seu Nome</label>
+                <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+            </div>
+            <div class="input-group">
+                <label for="mensagem">Como podemos ajudar sua lavoura?</label>
+                <textarea id="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 AgroFuturo. Todos os direitos reservados. Cultivando com amor e tecnologia.</p>
+    </footer>
+
+    <!-- Script para interatividade simples -->
+    <script>
+        // Função para simular o envio do formulário
+        function enviarMensagem(event) {
+            event.preventDefault(); // Impede a página de recarregar
+            const nome = document.getElementById('nome').value;
+            alert(`Obrigado pelo contato, ${nome}! Sua mensagem foi recebida com sucesso. Nossa equipe responderá em breve.`);
+            document.querySelector('.form-contato').reset(); // Limpa o formulário
+        }
+
+        // Script para rolagem suave ao clicar nos links do menu
+        document.querySelectorAll('nav ul li a, .btn').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
